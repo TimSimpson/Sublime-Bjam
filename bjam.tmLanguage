@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<plist version="1.0">
+
+<dict>
+
+    <key>fileTypes</key>
+
+    <array>
+
+        <string>jam</string>
+
+        <string>Jamrules</string>
+
+        <string>Jamfile</string>
+
+        <string>Jamconfig</string>
+
+    </array>
+
+    <key>name</key>
+
+    <string>bjam</string>
+
+    <key>patterns</key>
+
+    <array>
+
+        <dict>
+
+            <key>include</key>
+
+            <string>#variables</string>
+
+        </dict>
+
+        <dict>
+
+            <key>include</key>
+
+            <string>#rules</string>
+
+        </dict>
+
+        <dict>
+
+            <key>include</key>
+
+            <string>#pseudotargets</string>
+
+        </dict>
+
+        <dict>
+
+            <key>include</key>
+
+            <string>source.perforce_jam</string>
+
+        </dict>
+
+    </array>
+
+    <key>repository</key>
+
+    <dict>
+
+        <key>pseudotargets</key>
+
+        <dict>
+
+            <key>patterns</key>
+
+            <array>
+
+                <dict>
+
+                    <key>match</key>
+
+                    <string>(?&lt;=\s)(exe|lib|obj|dirs|file|shell|clean|install|uninstall)(?=\s)</string>
+
+                    <key>name</key>
+
+                    <string>support.class.built-in.jam</string>
+
+                </dict>
+
+            </array>
+
+        </dict>
+
+        <key>rules</key>
+
+        <dict>
+
+            <key>patterns</key>
+
+            <array>
+
+                <dict>
+
+                    <key>match</key>
+
+                    <string>\b(As|Bulk|Cc|C\+\+|Chmod|Clean|FDefines|File|FIncludes|Fortran|FQuote|GenFile|(Hard|Soft)Link|HdrRule|Install(Bin|Lib|Man|Shell)|Lex|Library(FromObjects)?|Link(Libraries)?|Main(FromObjects)?|MakeLocate|MkDir|Object(C(\+\+|c)Flags|Defines|Hdrs|s)?|RmTemps|Setuid|Sub(Dir(C(\+\+|c)Flags|Hdrs)?|Include)|Shell|Undefines|UserObject|Yacc)\b</string>
+
+                    <key>name</key>
+
+                    <string>support.function.built-in.jam</string>
+
+                </dict>
+
+            </array>
+
+        </dict>
+
+        <key>variables</key>
+
+        <dict>
+
+            <key>patterns</key>
+
+            <array>
+
+                <dict>
+
+                    <key>match</key>
+
+                    <string>\b(ALL_LOCATE_TARGET|AR|(AS|CC|C\+\+|FORTRAN|LINK|YACC)(FLAGS|DEFS)?|AWK|BCCROOT|(BIN|LIB|MAN|MK|SUB)DIR|CHMOD|CP|CRELIB|CW|DEFINES|DOT(DOT)?|(EXE|FILE)?MODE|GROUP|HDR(GRIST|PATTERN|RULE|S(CAN|EARCH)?)|(INSTALL|SOURCE_)GRIST|JAM(FILE|RULES)|LEX|LINK(LIBS)?|LN|LOCATE_(SOURCE|TARGET)|MSVC(NT|DIR)?|MV|NEEDLIBS|NOAR(SCAN|UPDATE)|OPTIM|OWNER|RANLIB|RM|SEARCH_SOURCE|SHELL(HEADER|MODE)|STDHDRS|TOP|SUF(EXE|LIB|OBJ)|UNDEFFLAG|WATCOM|YACC(FILES|GEN))\b</string>
+
+                    <key>name</key>
+
+                    <string>support.other.variable.built-in.jam</string>
+
+                </dict>
+
+                <dict>
+
+                    <key>comment</key>
+
+                    <string>The SubDir rule causes jam to read in the $(TOP)/Jamrules file. (The Jamrules file can alternately be named by the variable $(xxxRULES), where xxx is the name of the root variable, e.g., $(TOPRULES))</string>
+
+                    <key>match</key>
+
+                    <string>\b([A-Z][A-Z0-9_]*RULES)\b</string>
+
+                    <key>name</key>
+
+                    <string>support.other.variable.built-in.jam</string>
+
+                </dict>
+
+            </array>
+
+        </dict>
+
+    </dict>
+
+    <key>scopeName</key>
+
+    <string>source.jambase</string>
+
+    <key>uuid</key>
+
+    <string>fa6ed8a5-5b01-4c84-ab41-fd50751c9dc1</string>
+
+</dict>
+
+</plist>
