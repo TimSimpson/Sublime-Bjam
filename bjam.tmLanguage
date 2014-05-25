@@ -1,169 +1,477 @@
 <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+       <key>fileTypes</key>
+       <array>
+          <string>jam</string>
+          <string>Jamrules</string>
+          <string>Jamfile</string>
+          <string>Jamconfig</string>
+       </array>
+       <key>name</key>
+       <string>Bjam</string>
 
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 
-<plist version="1.0">
+
+       <key>patterns</key>
+       <array>
 
 <dict>
-
-    <key>fileTypes</key>
-
-    <array>
-
-        <string>jam</string>
-
-        <string>Jamrules</string>
-
-        <string>Jamfile</string>
-
-        <string>Jamconfig</string>
-
-    </array>
-
-    <key>name</key>
-
-    <string>bjam</string>
-
-    <key>patterns</key>
-
-    <array>
-
-        <dict>
-
-            <key>include</key>
-
-            <string>#variables</string>
-
-        </dict>
-
-        <dict>
-
-            <key>include</key>
-
-            <string>#rules</string>
-
-        </dict>
-
-        <dict>
-
-            <key>include</key>
-
-            <string>#pseudotargets</string>
-
-        </dict>
-
-        <dict>
-
-            <key>include</key>
-
-            <string>source.perforce_jam</string>
-
-        </dict>
-
-    </array>
-
-    <key>repository</key>
-
-    <dict>
-
-        <key>pseudotargets</key>
-
-        <dict>
-
-            <key>patterns</key>
-
-            <array>
-
-                <dict>
-
-                    <key>match</key>
-
-                    <string>(?&lt;=\s)(exe|lib|obj|dirs|file|shell|clean|install|uninstall)(?=\s)</string>
-
-                    <key>name</key>
-
-                    <string>support.class.built-in.jam</string>
-
-                </dict>
-
-            </array>
-
-        </dict>
-
-        <key>rules</key>
-
-        <dict>
-
-            <key>patterns</key>
-
-            <array>
-
-                <dict>
-
-                    <key>match</key>
-
-                    <string>\b(As|Bulk|Cc|C\+\+|Chmod|Clean|FDefines|File|FIncludes|Fortran|FQuote|GenFile|(Hard|Soft)Link|HdrRule|Install(Bin|Lib|Man|Shell)|Lex|Library(FromObjects)?|Link(Libraries)?|Main(FromObjects)?|MakeLocate|MkDir|Object(C(\+\+|c)Flags|Defines|Hdrs|s)?|RmTemps|Setuid|Sub(Dir(C(\+\+|c)Flags|Hdrs)?|Include)|Shell|Undefines|UserObject|Yacc)\b</string>
-
-                    <key>name</key>
-
-                    <string>support.function.built-in.jam</string>
-
-                </dict>
-
-            </array>
-
-        </dict>
-
-        <key>variables</key>
-
-        <dict>
-
-            <key>patterns</key>
-
-            <array>
-
-                <dict>
-
-                    <key>match</key>
-
-                    <string>\b(ALL_LOCATE_TARGET|AR|(AS|CC|C\+\+|FORTRAN|LINK|YACC)(FLAGS|DEFS)?|AWK|BCCROOT|(BIN|LIB|MAN|MK|SUB)DIR|CHMOD|CP|CRELIB|CW|DEFINES|DOT(DOT)?|(EXE|FILE)?MODE|GROUP|HDR(GRIST|PATTERN|RULE|S(CAN|EARCH)?)|(INSTALL|SOURCE_)GRIST|JAM(FILE|RULES)|LEX|LINK(LIBS)?|LN|LOCATE_(SOURCE|TARGET)|MSVC(NT|DIR)?|MV|NEEDLIBS|NOAR(SCAN|UPDATE)|OPTIM|OWNER|RANLIB|RM|SEARCH_SOURCE|SHELL(HEADER|MODE)|STDHDRS|TOP|SUF(EXE|LIB|OBJ)|UNDEFFLAG|WATCOM|YACC(FILES|GEN))\b</string>
-
-                    <key>name</key>
-
-                    <string>support.other.variable.built-in.jam</string>
-
-                </dict>
-
-                <dict>
-
-                    <key>comment</key>
-
-                    <string>The SubDir rule causes jam to read in the $(TOP)/Jamrules file. (The Jamrules file can alternately be named by the variable $(xxxRULES), where xxx is the name of the root variable, e.g., $(TOPRULES))</string>
-
-                    <key>match</key>
-
-                    <string>\b([A-Z][A-Z0-9_]*RULES)\b</string>
-
-                    <key>name</key>
-
-                    <string>support.other.variable.built-in.jam</string>
-
-                </dict>
-
-            </array>
-
-        </dict>
-
-    </dict>
-
-    <key>scopeName</key>
-
-    <string>source.jambase</string>
-
-    <key>uuid</key>
-
-    <string>fa6ed8a5-5b01-4c84-ab41-fd50751c9dc1</string>
-
+<key>comment</key>
+<string>
+Boost Build Jamroot.jam syntax highlighting. Fun for everyone... even ME.
+
+</string>
 </dict>
 
-</plist>
+<dict>
+    <key>captures</key>
+        <dict>
+            <key>1</key>
+                <dict>
+                        <key>name</key><string>comment</string>
+                </dict>
+        </dict>
+        <key>match</key>
+        <string>(#).*$\n?</string>
+        <key>name</key>
+        <string>comment</string>
+</dict>
+
+
+
+ <dict>
+        <key>captures</key>
+        <dict>
+                <key>1</key>
+                <dict>
+                        <key>name</key>
+                        <string>comment</string>
+                </dict>
+        </dict>
+        <key>match</key>
+        <string>\:</string>
+        <key>name</key>
+        <string>keyword</string>
+</dict>
+
+
+<dict>
+        <key>captures</key>
+        <dict>
+                <key>1</key>
+                <dict>
+                        <key>name</key>
+                        <string>bang</string>
+                </dict>
+        </dict>
+        <key>match</key>
+        <string>\!</string>
+        <key>name</key>
+        <string>constant.numeric</string>
+</dict>
+
+<dict>
+        <key>captures</key>
+        <dict>
+                <key>1</key>
+                <dict>
+                        <key>name</key>
+                        <string>ands</string>
+                </dict>
+        </dict>
+        <key>match</key>
+        <string>\&\&</string>
+        <key>name</key>
+        <string>constant.numeric</string>
+</dict>
+
+<dict>
+        <key>captures</key>
+        <dict>
+                <key>1</key>
+                <dict>
+                        <key>name</key>
+                        <string>greater-than</string>
+                </dict>
+        </dict>
+        <key>match</key>
+        <string>\></string>
+        <key>name</key>
+        <string>constant.numeric</string>
+</dict>
+
+<dict>
+        <key>captures</key>
+        <dict>
+                <key>1</key>
+                <dict>
+                        <key>name</key>
+                        <string>if</string>
+                </dict>
+        </dict>
+        <key>match</key>
+        <string>if</string>
+        <key>name</key>
+        <string>keyword</string>
+</dict>
+ <dict>
+        <key>captures</key>
+        <dict>
+                <key>1</key>
+                <dict>
+                        <key>name</key>
+                        <string>local</string>
+                </dict>
+        </dict>
+        <key>match</key>
+        <string>local</string>
+        <key>name</key>
+        <string>keyword</string>
+</dict>
+
+
+<dict>
+        <key>captures</key>
+        <dict>
+                <key>1</key>
+                <dict>
+                        <key>name</key>
+                        <string>rule</string>
+                </dict>
+        </dict>
+        <key>match</key>
+        <string>rule[\s\S]+?[^\s]+</string>
+        <key>name</key>
+        <string>keyword</string>
+</dict>
+
+
+
+<dict>
+    <key>string-literal</key><string>A literal string.</string>
+    <key>name</key><string>string</string>
+
+    <key>begin</key><string>\"</string>
+
+    <key>beginCaptures</key>
+        <dict>
+            <key>0</key>
+                <dict>
+                    <key>name</key><string>string</string>
+                </dict>
+        </dict>
+
+    <key>patterns</key>
+        <array>
+            <dict>
+                <key>name</key><string>escaped quote</string>
+                <key>match</key><string>\\\"</string>
+            </dict>
+        </array>
+
+    <key>end</key><string>\"</string>
+    <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+              <dict>
+                  <key>name</key><string>string</string>
+              </dict>
+        </dict>
+</dict>
+
+
+<dict>
+    <key>string-literal</key><string>A variable.</string>
+    <key>name</key><string>variable.parameter</string>
+
+    <key>begin</key><string>\$\s*\(</string>
+
+    <key>beginCaptures</key>
+        <dict>
+            <key>0</key>
+                <dict>
+                    <key>name</key><string>variable.parameter</string>
+                </dict>
+        </dict>
+
+
+    <key>end</key><string>\)</string>
+    <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+              <dict>
+                  <key>name</key><string>variable.parameter</string>
+              </dict>
+        </dict>
+</dict>
+
+
+<dict>
+    <key>string-literal</key><string>Stuff in braces.</string>
+    <key>name</key><string>keyword</string>
+
+    <key>begin</key><string>\{</string>
+
+    <key>beginCaptures</key>
+        <dict>
+            <key>0</key>
+                <dict>
+                    <key>name</key><string>variable.parameter</string>
+                </dict>
+        </dict>
+
+     <key>patterns</key>
+        <array>
+            <dict>
+                <key>include</key><string>$self</string>
+            </dict>
+        </array>
+
+    <key>end</key><string>\}</string>
+    <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+              <dict>
+                  <key>name</key><string>variable.parameter</string>
+              </dict>
+        </dict>
+</dict>
+
+
+
+<dict>
+    <key>string-literal</key><string>A paranthesis list.</string>
+    <key>name</key><string>keyword</string>
+
+    <key>begin</key><string>\(</string>
+
+    <key>beginCaptures</key>
+        <dict>
+            <key>0</key>
+                <dict>
+                    <key>name</key><string>keyword</string>
+                </dict>
+        </dict>
+
+    <key>patterns</key>
+        <array>
+            <dict>
+                <key>comment</key><string>$self</string>
+            </dict>
+            <dict>
+                <key>name</key><string>constant.numeric</string>
+                <key>match</key><string>:</string>
+            </dict>
+            <dict>
+                <key>name</key><string>string.quoted.double.json</string>
+                <key>match</key><string>[^\s]+</string>
+            </dict>
+
+        </array>
+
+    <key>end</key><string>\)</string>
+    <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+              <dict>
+                  <key>name</key><string>keyword</string>
+              </dict>
+        </dict>
+</dict>
+
+
+<dict>
+    <key>string-literal</key><string>A square bracket list.</string>
+    <key>name</key><string>keyword</string>
+
+    <key>begin</key><string>\[</string>
+
+    <key>beginCaptures</key>
+        <dict>
+            <key>0</key>
+                <dict>
+                    <key>name</key><string>keyword</string>
+                </dict>
+        </dict>
+
+    <key>patterns</key>
+        <array>
+            <dict>
+                <key>comment</key><string>$self</string>
+            </dict>
+            <dict>
+                <key>name</key><string>string.quoted.double.json</string>
+                <key>match</key><string>[^\s]+</string>
+            </dict>
+
+        </array>
+
+    <key>end</key><string>\]</string>
+    <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+              <dict>
+                  <key>name</key><string>keyword</string>
+              </dict>
+        </dict>
+</dict>
+
+<dict>
+    <key>string-literal</key><string>Assignment.</string>
+    <key>name</key><string>keyword</string>
+
+    <key>begin</key><string>[^\s\;]+(\S\s)+\=</string>
+
+    <key>beginCaptures</key>
+        <dict>
+            <key>0</key>
+                <dict>
+                    <key>name</key><string>keyword</string>
+                </dict>
+        </dict>
+
+    <key>patterns</key>
+        <array>
+            <dict>
+                <key>include</key><string>$self</string>
+            </dict>
+
+        </array>
+
+    <key>end</key><string>;</string>
+    <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+              <dict>
+                  <key>name</key><string>keyword</string>
+              </dict>
+        </dict>
+</dict>
+
+<!--
+<dict>
+    <key>string-literal</key><string>If statement.</string>
+    <key>name</key><string>keyword</string>
+
+    <key>begin</key><string>if[\s\S]+[[^{][\s\S]]+{</string>
+
+    <key>beginCaptures</key>
+        <dict>
+            <key>0</key>
+                <dict>
+                    <key>name</key><string>keyword</string>
+                </dict>
+        </dict>
+
+     <key>patterns</key>
+        <array>
+            <dict>
+                <key>include</key><string>$self</string>
+            </dict>
+
+        </array>
+
+    <key>end</key><string>}</string>
+    <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+              <dict>
+                  <key>name</key><string>keyword</string>
+              </dict>
+        </dict>
+</dict>
+-->
+
+<dict>
+    <key>string-literal</key><string>Rule definition.</string>
+    <key>name</key><string>keyword</string>
+
+    <key>begin</key><string>rule[\S\s]+[^\s]+(\S\s)+\(</string>
+
+    <key>beginCaptures</key>
+        <dict>
+            <key>0</key>
+                <dict>
+                    <key>name</key><string>keyword</string>
+                </dict>
+        </dict>
+
+     <key>patterns</key>
+        <array>
+            <dict>
+                <key>includes</key><string>$self</string>
+            </dict>
+
+        </array>
+
+    <key>end</key><string>\)</string>
+    <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+              <dict>
+                  <key>name</key><string>keyword</string>
+              </dict>
+        </dict>
+</dict>
+
+
+<dict>
+    <key>string-literal</key><string>A rule being invoked.</string>
+    <key>name</key><string>keyword</string>
+
+    <key>begin</key><string>[^\s\;]+</string>
+
+    <key>beginCaptures</key>
+        <dict>
+            <key>0</key>
+                <dict>
+                    <key>name</key><string>entity.name.function.c</string>
+                </dict>
+        </dict>
+
+    <key>patterns</key>
+        <array>
+            <dict>
+                <key>name</key><string>constant.numeric</string>
+                <key>match</key><string>:</string>
+            </dict>
+            <dict>
+                <key>name</key><string>comment</string>
+                <key>match</key><string>(#).*$\n?</string>
+            </dict>
+            <dict>
+                <key>name</key><string>string.quoted.double.json</string>
+                <key>match</key><string>[^\s]+</string>
+            </dict>
+
+        </array>
+
+    <key>end</key><string>;</string>
+    <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+              <dict>
+                  <key>name</key><string>storage.type.c++</string>
+              </dict>
+        </dict>
+</dict>
+
+
+
+<dict>
+<key>comment</key>
+<string>
+                END CUSTOM SYNTAX RULES
+</string>
+</dict>
+       </array>
+
+
+       <key>scopeName</key>
+       <string>source.bjam</string>
+       <key>uuid</key>
+       <string>26253B18-631D-13D9-AF3B-0F0F931D9AE6</string>
+    </dict>
+    </plist>
